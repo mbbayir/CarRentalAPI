@@ -1,8 +1,4 @@
-﻿@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -15,15 +11,56 @@
     <title>Login</title>
 
     <!-- Custom fonts for this template-->
-    <link href="~/Admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
           rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="~/Admin/css/sb-admin-2.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #4e73df, #224abe);
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-control {
+            border: 2px solid #d1d3e2;
+            border-radius: 25px;
+            background-color: #f8f9fc;
+            padding: 0.75rem 1.25rem;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: #4e73df;
+            border-color: #4e73df;
+            border-radius: 25px;
+            padding: 0.75rem 1.25rem;
+            font-size: 1rem;
+            transition: all 0.3s ease-in-out;
+        }
+
+            .btn-primary:hover {
+                background-color: #224abe;
+                border-color: #224abe;
+            }
+
+        .h4 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4e73df;
+        }
+
+        .small {
+            color: #4e73df;
+        }
+    </style>
 </head>
 
-<body class="bg-gradient-primary">
+<body>
     <div class="container">
         <div class="card o-hidden border-0 shadow-lg my-5">
             <div class="card-body p-0">
@@ -31,7 +68,7 @@
                     <div class="col-lg-7">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Login</h1>
+                                <h1 class="h4 mb-4">Login</h1>
                             </div>
                             <form class="user">
                                 <div class="form-group">
@@ -54,13 +91,8 @@
             </div>
         </div>
     </div>
-
     <!-- Bootstrap core JavaScript-->
-    <script src="~/Admin/vendor/jquery/jquery.min.js"></script>
-    <script src="~/Admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="~/Admin/vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="~/Admin/js/sb-admin-2.min.js"></script>
-    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script>
         $(document).ready(function () {
             var baseurl = "https://localhost:7110/";
@@ -71,16 +103,12 @@
                     Password: $("#password").val(),
                 };
 
-                console.log(dto);
-                console.log(baseurl);
-
                 $.ajax({
                     type: "POST",
                     url: baseurl + "api/User/SignIn",
                     contentType: "application/json",
                     data: JSON.stringify(dto),
                     success: function (response) {
-                        console.log(response);
                         if (response.status === true) {
                             $("#divResult")
                                 .show()
